@@ -1,0 +1,58 @@
+{% extends "main/base_template.html" %}
+{% block title %}iWear - My Closet {% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <b><legend class="border-bottom mb-1">My Closet</legend></b>
+            </div>
+        </div>
+        <dl class="row">
+            <dt style="color:red"> Statistic and data on your closet clothing items</dt>
+            <dt class="col-sm-3">Number of items</dt>
+            <dd class="col-sm-9">{{ numOfItems }}</dd>
+            <dt class="col-sm-3">Total worn events</dt>
+            <dd class="col-sm-9">{{ totalWornEvents }}</dd>
+            <dt class="col-sm-3">First worn item</dt>
+            <dd class="col-sm-9">{% if totalWornEvents %} <b><a href="../item/{{first_worn_item.tag_id }}">{{ first_worn_item.name }}</a></b> on {{ first_worn_item_worn_event_date }}{% else %}No worn events{% endif %}</dd>
+            <dt class="col-sm-3">Last worn item</dt>
+            <dd class="col-sm-9">{% if totalWornEvents %} <b><a href="../item/{{lastWornItem.tag_id }}">{{ lastWornItem.name }}</a></b> on {{ last_worn_item_worn_event_date }}{% else %}No worn events{% endif %}</dd>
+            <dt class="col-sm-3">Number of categories</dt>
+            <dd class="col-sm-9">{{ numOfCategories }}</dd>
+            <dt class="col-sm-3">Least worn category</dt>
+            <dd class="col-sm-9">{% if totalWornEvents %} <b><a href="../category/{{ leastWornCategory }}">{{ leastWornCategory }}</a></b> - {{ leastWornCategorytotalwornevent }} times, {{ least_worn_category_percentage }}% of the time.{% else %}No worn events{% endif %}</dd>
+            <dt class="col-sm-3">Most worn category</dt>
+            <dd class="col-sm-9">{% if totalWornEvents %} <b><a href="../category/{{mostWornCategory }}">{{ mostWornCategory }}</a></b> - {{ mostWornCategorytotalwornevent }} times, {{ most_worn_category_percentage }}% of the time.{% else %}No worn events{% endif %}</dd>
+        </dl>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <b><legend class="border-bottom mb-1">My Categories</legend></b>
+            </div>
+        </div>
+
+        <dl class="row">
+
+{% if totalWornEvents %}
+            <dt style="color:red">Select a category to see its clothing items</dt>
+            <dt class="col-sm-{{numOfCategories}}">
+                {% for category in categories  %}
+                <a href="../category/{{ category }}">{{ category }}</a> &emsp;
+                {% endfor %}
+            </dt>
+        </dl>
+    </div>
+</div>
+{% else %}
+<dt style="color:red">No data, please enter worn events.</dt>
+{% endif %}
+
+
+{% endblock %}

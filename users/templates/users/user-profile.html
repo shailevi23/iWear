@@ -1,0 +1,32 @@
+{% extends "main/base_template.html" %}
+{% block title %}iWear - Profile{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <b><legend class="border-bottom mb-2">{{ user.first_name }} {{ user.last_name }}</legend></b>
+            </div>
+            <div class="col-6" style="text-align: right;">
+                {% if request.user == user %}
+                <a href="{% url 'update-profile' %}" class="btn btn-primary">Update profile</a>
+                {% endif %}
+            </div>
+        </div>
+        <dl class="row">
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">{{ user.email }}</dd>
+            <dt class="col-sm-3">Birthday</dt>
+            <dd class="col-sm-9">{{ user.birth_date }}</dd>
+            <dt class="col-sm-3">Gender</dt>
+            <dd class="col-sm-9">{{ user.gender.title }}</dd>
+            <dt class="col-sm-3">Reader ID</dt>
+            <dd class="col-sm-9">{{ user.reader_id }}</dd>
+            <dt class="col-sm-3">Join date</dt>
+            <dd class="col-sm-9">{{ user.date_joined }}</dd>
+            <img class="col-sm-5" src="{{ user.image_url }}" height=200 alt="Profile picture" id="profile_picture">
+        </dl>
+    </div>
+</div>
+{% endblock %}

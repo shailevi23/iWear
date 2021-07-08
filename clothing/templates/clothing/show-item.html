@@ -1,0 +1,32 @@
+{% extends "main/base_template.html" %}
+{% block title %}iWear - item #{{ item.tag_id }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <b><legend class="border-bottom mb-2">{{ item.name }}</legend></b>
+            </div>
+            <div class="col-6" style="text-align: right;">
+                <a href="{% url 'user-closet' %}" class="btn btn-primary">My Closet</a> 
+            </div>
+        </div>
+        <dl class="row">
+            <dt class="col-sm-3">Category</dt>
+            <dd class="col-sm-9">{{ item.category.category_name }}</dd>
+            <dt class="col-sm-3">Tag ID</dt>
+            <dd class="col-sm-9">{{ item.tag_id }}</dd>
+            <dt class="col-sm-3">Number of times worn</dt>
+            <dd class="col-sm-9">{{ numOfTimesWorn }}</dd>
+            <dt class="col-sm-3">Ideal wear temperature</dt>
+            <dd class="col-sm-9">{{ idealWearTemp }}</dd>
+            <dt class="col-sm-3">Date of first use</dt>
+            <dd class="col-sm-9">{{ dateOfFirstUse }}</dd>
+            <dt class="col-sm-3">Date of last use</dt>
+            <dd class="col-sm-9">{{ dateOfLastUse }}</dd>
+            <img class="col-sm-5" src="{{ item.image_url}}" height=200 alt="Item picture" id="Item_picture">
+        </dl>
+    </div>
+</div>
+{% endblock %}

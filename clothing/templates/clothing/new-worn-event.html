@@ -1,0 +1,19 @@
+{% extends "main/base_template.html" %}
+{%load crispy_forms_tags %}
+
+{% block title %}iWear - New Worn Event{% endblock %}
+
+{% block content %}
+<h1>Add New Worn Event</h1>
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ worn_event_creation_form|crispy }}
+                <button class="btn btn-primary mt-3" type="submit">Add</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}

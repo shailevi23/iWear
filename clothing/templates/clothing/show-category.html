@@ -1,0 +1,22 @@
+{% extends "main/base_template.html" %}
+{% block title %}iWear - Category {{ category_name }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <b><legend class="border-bottom mb-2">{{ category_name }} Clothing Items</legend></b>
+            </div>
+            <div class="col-6" style="text-align: right;">
+                <a href="{% url 'user-closet' %}" class="btn btn-primary">My Closet</a> 
+            </div>
+        </div>
+        <dl class="row">
+            {% for item in category  %}
+            <b><a href="../../item/{{ item.tag_id }}">{{ item.name }}</a></b>
+            {% endfor %}
+        </dl>
+    </div>
+</div>
+{% endblock %}

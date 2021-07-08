@@ -1,0 +1,21 @@
+{% extends "main/base_template.html" %}
+{%load crispy_forms_tags %}
+
+{% block title %}iWear - Register{% endblock %}
+{% block sidebar %} {% endblock sidebar%}
+
+{% block content %}
+<h1>Register</h1>
+
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ user_creation_form|crispy }}
+                <button class="btn btn-primary mt-3" type="submit">Register</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}
