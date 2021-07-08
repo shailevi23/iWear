@@ -5,6 +5,7 @@ from django.contrib import messages
 from clothing.forms import ItemCreationForm, WornEventCreationForm, WeatherRangeForm
 from clothing.models import ClothCategory, ClothingItem, WornEvent
 from users.views import get_user
+import requests, json
 
 @login_required()
 def show_item(request, tag_id):
@@ -167,6 +168,16 @@ def add_item(request):
 
 @login_required()
 def add_worn_event(request):
+    def get_temp():
+        BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
+        API_KEY = 'cdbf57cae65a0dc7c5809763f13c67c1'
+        CITY = 'Tel Aviv'
+        UNIT = 'metric'
+        URL = BASE_URL + "q=" + CITY + "&appid=" + API_KEY + "&units=" + UNIT
+        response = requests.get(URL)
+        
+        return int(response.json()['main']['temp'])
+
     if request.method == 'POST':
         worn_event_creation_form = WornEventCreationForm(request.POST)
         if worn_event_creation_form.is_valid():
@@ -175,7 +186,15 @@ def add_worn_event(request):
             if(item):
                 # loop = asyncio.new_event_loop()
                 # curr_temperature = loop.run_until_complete(get_temperature())
-                temperture = 32
+
+                # BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
+                # API_KEY = 'cdbf57cae65a0dc7c5809763f13c67c1'
+                # CITY = 'Tel Aviv'
+                # UNIT = 'metric'
+                # URL = BASE_URL + "q=" + CITY + "&appid=" + API_KEY + "&units=" + UNIT
+                # response = requests.get(URL)
+                # temperture = int(response.json()['main']['temp'])
+                temperture = get_temp()
                 worn_event = WornEvent(item=item, temperture=temperture)
                 worn_event.save()
                 path = 'item/' + tag_id

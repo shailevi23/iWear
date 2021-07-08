@@ -68,17 +68,17 @@ class ClothingItem(models.Model):
     @property
     def ideal_temperture(self):
         worn_events = WornEvent.objects.filter(item=self).values()
-        ideal_temp = None
 
         if(worn_events.count() > 0):
-            temp_sum = 0
+            temperture_sum = 0
 
             for event in worn_events:
-                temp_sum += event['temperture']
+                temperture_sum += event['temperture']
             
-            ideal_temp = temp_sum / worn_events.count()
-                
-        return ideal_temp
+            ideal_temp = temperture_sum / worn_events.count()
+            return round(ideal_temp, 1)
+
+        return None
 
 class WornEvent(models.Model):
     item = models.ForeignKey(ClothingItem, on_delete=models.CASCADE, related_name='Worn_item')
