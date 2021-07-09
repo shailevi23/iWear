@@ -1,0 +1,25 @@
+{% extends "main/base_template.html" %}
+{%load crispy_forms_tags %}
+
+{% block title %}iWear - Recommendations Randomly{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <b><legend class="border-bottom mb-1">Random recommendation</legend></b>
+            </div>
+        </div>
+
+        {% if random_index %}
+        <dl class="row">
+            <a href="../item/{{ random_item.tag_id }}">{{ random_item.name }}</a>
+        </dl>
+        {% else %}
+        <dt style="color:red">No data, please enter clothing items.</dt>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

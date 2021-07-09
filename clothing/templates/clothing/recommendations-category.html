@@ -1,0 +1,29 @@
+{% extends "main/base_template.html" %}
+{%load crispy_forms_tags %}
+
+{% block title %}iWear - Recommendations Category {% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <b><legend class="border-bottom mb-1">Based on Categories</legend></b>
+            </div>
+        </div>
+
+        {% if categories %}
+        <dl class="row">
+            <dt style="color:red">Select category</dt>
+            <dt class="col-sm-{{ numOfCategories }}">
+                {% for category in categories  %}
+                <a href="../category/{{ category }}">{{ category }}</a> &emsp;
+                {% endfor %}
+            </dt>
+        </dl>
+        {% else %}
+        <dt style="color:red">No data, please enter clothing items.</dt>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

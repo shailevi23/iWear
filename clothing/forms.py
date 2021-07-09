@@ -24,5 +24,5 @@ class WornEventCreationForm(forms.Form):
 
 
 class WeatherRangeForm(forms.Form):
-    minimum_temperature = forms.IntegerField(min_value=-50)
-    maximum_temperature = forms.IntegerField(max_value=50)
+    minimum_temperature = forms.IntegerField(min_value=-15)
+    maximum_temperature = forms.IntegerField(max_value=45)

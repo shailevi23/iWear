@@ -59,9 +59,16 @@
               <li><a class="dropdown-item" href="{% url 'add-worn-event' %}">Add Worn Event</a></li>
             </ul>
           </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'recommendations' %}" style="color:rgb(208, 255, 0)">Recommendations</a>
-            </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:rgb(208, 255, 0)">
+              Recommendations
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'rec-category' %}">By Category</a></li>
+              <li><a class="dropdown-item" href="{% url 'rec-weather' %}">By Weather</a></li>
+              <li><a class="dropdown-item" href="{% url 'rec-randomly' %}">Randomly</a></li>
+            </ul>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:rgb(208, 255, 0)">
               Account

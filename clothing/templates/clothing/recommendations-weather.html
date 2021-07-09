@@ -1,8 +1,29 @@
 {% extends "main/base_template.html" %}
+
 {% block title %}iWear - Recommendations Weather {% endblock %}
 
 {% block content %}
-min - {{minimum_temperature}}
-<br>
-max - {{maximum_temperature}}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <b><legend class="border-bottom mb-1">Based on Weather</legend></b>
+            </div>
+        </div>
+
+        {% if num_of_items %}
+        <dl class="row">
+            <dt class="col-sm-{{ num_of_items }}">
+                <dt style="color:red">Temperature range: {{ minimum_temperature }} - {{ maximum_temperature }}</dt>
+                {% for item in recommended_items  %}
+                <b><a href="../../item/{{ item.tag_id }}">{{ item.name }}</a></b>
+                {% endfor %}
+            </dt>
+        </dl>
+        {% else %}
+        <dt style="color:red">No items was found in the temperature range: {{ minimum_temperature }} - {{ maximum_temperature }}.</dt>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
+

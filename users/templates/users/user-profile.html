@@ -19,13 +19,14 @@
             <dd class="col-sm-9">{{ user.email }}</dd>
             <dt class="col-sm-3">Birthday</dt>
             <dd class="col-sm-9">{{ user.birth_date }}</dd>
+            {% if user.gender %}
             <dt class="col-sm-3">Gender</dt>
             <dd class="col-sm-9">{{ user.gender.title }}</dd>
+            {% endif %}
             <dt class="col-sm-3">Reader ID</dt>
             <dd class="col-sm-9">{{ user.reader_id }}</dd>
             <dt class="col-sm-3">Join date</dt>
             <dd class="col-sm-9">{{ user.date_joined }}</dd>
-            <img class="col-sm-5" src="{{ user.image_url }}" height=200 alt="Profile picture" id="profile_picture">
         </dl>
     </div>
 </div>
