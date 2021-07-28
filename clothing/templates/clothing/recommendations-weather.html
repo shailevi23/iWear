@@ -9,19 +9,35 @@
             <div class="col-6">
                 <b><legend class="border-bottom mb-1">Based on Weather</legend></b>
             </div>
+            <div class="col-6" style="text-align: right;">
+              <a href="/recommendations/randomly/{{ minimum_temperature }}/{{ maximum_temperature }}" class="btn btn-primary">Recommend</a> 
+            </div>
         </div>
 
         {% if num_of_items %}
         <dl class="row">
             <dt class="col-sm-{{ num_of_items }}">
                 <dt style="color:red">Temperature range: [{{ minimum_temperature }} - {{ maximum_temperature }}]</dt>
-                {% for item in recommended_items  %}
-                <b><a href="../item/{{item.tag_id }}"><img src="{{ item.image_url }}" style="width:35px;height:35px;"></a>
-                <a href="../../item/{{ item.tag_id }}">{{ item.name }}</a></b>
+                {% for item in recommended_items %}
+                <div class="col">
+                  <div class="card" style="width: 10rem;">
+                    <div class="tab-content" id="card-tab-content">
+                        <div class="tab-pane fade show active" id="item-{{item.tag_id}}" role="tabpanel"
+                        aria-labelledby="item-tab-{{item.tag_id}}">
+                        <a href="../item/{{item.tag_id }}"><img src="{{item.image_url}}" style="width:158px;height:75px;" alt="{{item.name}}"></a>
+                        <div class="card-body">
+                            <a href="../item/{{item.tag_id }}"><h6 class="card-title">{{item.name}}</h6></a>
+                          <h6>#{{item.tag_id}}</h6>
+                          <a href="../category/{{ item.category.category_name }}"></h6>{{item.category.category_name}}</h6></a>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
                 {% endfor %}
         </dl>
         {% else %}
-        <dt style="color:red">No items was found in the temperature range: {{ minimum_temperature }} - {{ maximum_temperature }}.</dt>
+        <dt style="color:red">No items was found in the temperature range: [{{ minimum_temperature }} - {{ maximum_temperature }}]</dt>
         {% endif %}
     </div>
 </div>

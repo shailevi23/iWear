@@ -67,7 +67,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     gender = models.ForeignKey(Gender, on_delete=models.SET_NULL, blank=True, null=True, related_name='gender')
     birth_date = models.DateField(auto_now=False, auto_now_add=False)
     reader_id = models.CharField(max_length=10000, unique=True)
-    image_url = models.TextField(blank=True, default='../../static/img/default_profile_img.png')
+    image_url = models.TextField(blank=True, default='/static/img/default_profile_img.png')
     date_joined = models.DateField(default=timezone.now)
 
     

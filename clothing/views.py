@@ -224,6 +224,56 @@ def recommendations_randomly(request):
         })
 
 @login_required()
+def recommendations_randomly_cat(request, category_name):
+    user = get_user(request.user.id)
+    if not user:
+        return redirect('home')
+    else:
+        random_index = None
+        random_item = None
+        items_in_category, cat_name = get_items_in_category(category_name, request.user)
+
+        if(len(items_in_category) != 0):
+            num = len(items_in_category)
+            random_index = random.randint(1, num)
+            random_item = items_in_category[random_index-1]
+
+        return render(request, 'clothing/recommendations-randomly.html', {
+        'random_index': random_index,
+        'random_item': random_item,
+        })
+
+
+@login_required()
+def recommendations_randomly_temp(request, min_temp, max_temp):
+    user = get_user(request.user.id)
+    if not user:
+        return redirect('home')
+    else:
+        random_index = None
+        random_item = None
+        recommended_items = []
+
+        all_items = user.all_items
+        if(len(all_items) > 0):
+            for curr_item in  all_items:
+                curr_item_ideal_temperture = curr_item.ideal_temperture
+                if (curr_item_ideal_temperture is not None):
+                    if ((float(min_temp) <= curr_item_ideal_temperture) and (curr_item_ideal_temperture <= float(max_temp))):
+                        recommended_items.append(curr_item)
+
+        if(len(recommended_items) != 0):
+            num = len(recommended_items)
+            random_index = random.randint(1, num)
+            random_item = recommended_items[random_index-1]
+
+        return render(request, 'clothing/recommendations-randomly.html', {
+        'random_index': random_index,
+        'random_item': random_item,
+        })
+        
+
+@login_required()
 def add_item(request):
     if request.method == 'POST':
         item_creation_form = ItemCreationForm(request.POST)
@@ -246,8 +296,11 @@ def add_worn_event(request):
     def get_temp():
         BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
         API_KEY = 'cdbf57cae65a0dc7c5809763f13c67c1'
-        # CITY = 'Tel Aviv'
-        CITY = request.user.location.title
+        if(request.user.location):
+            CITY = request.user.location.title
+        else:
+            CITY = 'Tel Aviv'
+
         UNIT = 'metric'
         URL = BASE_URL + "q=" + CITY + "&appid=" + API_KEY + "&units=" + UNIT
         response = requests.get(URL)

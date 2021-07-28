@@ -14,10 +14,21 @@
         </div>
 
         {% if random_index %}
-        <dl class="row">
-            <b><a href="../item/{{random_item.tag_id }}"><img src="{{ random_item.image_url }}"  style="width:35px;height:35px;"></a>
-            <a href="../item/{{ random_item.tag_id }}">{{ random_item.name }}</a>
-        </dl>
+        <div class="col">
+          <div class="card" style="width: 10rem;">
+            <div class="tab-content" id="card-tab-content">
+                <div class="tab-pane fade show active" id="item-{{random_item.tag_id}}" role="tabpanel"
+                aria-labelledby="item-tab-{{item.tag_id}}">
+                <a href="/item/{{random_item.tag_id }}"><img src="{{random_item.image_url}}" style="width:158px;height:75px;" alt="{{item.name}}"></a>
+                <div class="card-body">
+                    <a href="/item/{{random_item.tag_id }}"><h6 class="card-title">{{random_item.name}}</h6></a>
+                  <h6>#{{random_item.tag_id}}</h6>
+                  <a href="/category/{{ random_item.category.category_name }}"></h6>{{random_item.category.category_name}}</h6></a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
         {% else %}
         <dt style="color:red">No data, please enter clothing items.</dt>
         {% endif %}

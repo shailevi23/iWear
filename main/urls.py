@@ -24,10 +24,12 @@ urlpatterns = [
     path('category/<str:category>', clothing_views.show_category, name='user-category'),
     path('closet/', clothing_views.show_closet, name='user-closet'),
     
-    # path('recommendations', clothing_views.recommendations, name='recommendations'),
     path('recommendations/category', clothing_views.recommendations_category, name='rec-category'),
     path('recommendations/weather', clothing_views.recommendations_weather, name='rec-weather'),
     path('recommendations/randomly', clothing_views.recommendations_randomly, name='rec-randomly'),
+    path('recommendations/randomly/<str:category_name>', clothing_views.recommendations_randomly_cat, name='rec-randomly_cat'),
+    path('recommendations/randomly/<str:min_temp>/<str:max_temp>', clothing_views.recommendations_randomly_temp, name='rec-randomly_temp'),
+
     
 ]
 

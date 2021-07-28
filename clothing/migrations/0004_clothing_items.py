@@ -20,17 +20,15 @@ class Migration(migrations.Migration):
         items_test_data = []
         
         for user in users:
-            num_of_categories = random.randint(1, categories.count())
+            num_of_categories = random.randint(4, categories.count())
             
             for i in range(num_of_categories):
-                num_of_items = random.randint(1, 20)
+                num_of_items = random.randint(1, 4)
+                num_of_items = num_of_items * 5
                 curr_category_rand_num = random.randint(1, num_of_categories)
                 cat = ClothCategory.objects.get(id=curr_category_rand_num)
 
                 for j in range(num_of_items):
-                    num_of_worn_events = random.randint(1, 50)
-                    index_of_item = ClothingItem.objects.filter(owner=user, category=cat).order_by('-tag_id').first()
-
                     name = "item " + "#" + str(items_counter)
                     owner = user
                     category = cat
@@ -74,7 +72,7 @@ class Migration(migrations.Migration):
         worn_events_test_data = []
 
         for item in items:
-            num_of_worn_events = random.randint(0, 50)
+            num_of_worn_events = random.randint(0, 30)
 
             for i in range(num_of_worn_events):
                 item = item

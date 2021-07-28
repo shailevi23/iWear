@@ -9,6 +9,7 @@
                 <b><legend class="border-bottom mb-2"><img src="../../static/img/{{ category_name }}.png"  style="width:35px;height:35px;"> {{ category_name }} Category</legend></b>
             </div>
             <div class="col-6" style="text-align: right;">
+                <a href="/recommendations/randomly/{{ category_name }}" class="btn btn-primary">Recommend</a> 
                 <a href="{% url 'user-closet' %}" class="btn btn-primary">My Closet</a> 
             </div>
         </div>
@@ -17,11 +18,24 @@
             <dd class="col-sm-9">{{ num_of_items }}</dd>
             <dt class="col-sm-3">Total worn events</dt>
             <dd class="col-sm-9">{{ total_worn_events }}</dd>
-            <dt style="color:red">Clothing Items</dt>
-            {% for item in items_in_category  %}
-                <b><a href="../item/{{item.tag_id }}"><img src="{{ item.image_url }}"  style="width:35px;height:35px;"></a>
-                <a href="../../item/{{ item.tag_id }}">{{ item.name }}</a></b>
-            {% endfor %}
+              {% for item in items_in_category %}
+              <div class="col">
+                <div class="card" style="width: 10rem;">
+                  <div class="tab-content" id="card-tab-content">
+                      <div class="tab-pane fade show active" id="item-{{item.tag_id}}" role="tabpanel"
+                      aria-labelledby="item-tab-{{item.tag_id}}">
+                      <a href="../item/{{item.tag_id }}"><img src="{{item.image_url}}" style="width:158px;height:75px;" alt="{{item.name}}"></a>
+                      <div class="card-body">
+                          <a href="../item/{{item.tag_id }}"><h6 class="card-title">{{item.name}}</h6></a>
+                        <h6>#{{item.tag_id}}</h6>
+                        <a href="../category/{{ item.category.category_name }}"></h6>{{item.category.category_name}}</h6></a>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
         </dl>
     </div>
 </div>
