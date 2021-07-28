@@ -246,7 +246,8 @@ def add_worn_event(request):
     def get_temp():
         BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
         API_KEY = 'cdbf57cae65a0dc7c5809763f13c67c1'
-        CITY = 'Tel Aviv'
+        # CITY = 'Tel Aviv'
+        CITY = request.user.location.title
         UNIT = 'metric'
         URL = BASE_URL + "q=" + CITY + "&appid=" + API_KEY + "&units=" + UNIT
         response = requests.get(URL)

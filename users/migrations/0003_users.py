@@ -1,13 +1,15 @@
 from django.db import migrations, transaction
-from users.models import Gender, User
+from users.models import Gender, User, Location
 from iWear.resources.names import FIRST_NAME_LIST, LAST_NAME_LIST
 from iWear.resources.images import PROFILE_IMAGE_URL_LIST
+from iWear.resources.locations import LOCATION_LIST
+
 import random
 
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('users', '0002_test_data_gender'),
+        ('users', '0002_add_genders_locations'),
     ]
 
     def generate_user_data(apps, schema_editor):
@@ -16,7 +18,7 @@ class Migration(migrations.Migration):
         users_test_data = [
             ('iWear@iWear.com', 'Amit', 'iWear', '1994-04-26', 5, "https://user-images.githubusercontent.com/58184521/121235257-54058280-c89d-11eb-9613-1590a2396d57.png"),
             ('TestUser@iWear.com', 'Amit', 'Test', '1994-04-26', 6, "https://user-images.githubusercontent.com/58184521/121235257-54058280-c89d-11eb-9613-1590a2396d57.png"),
-            ('Amit@iWear.com', 'Amit', 'Aharoni', '1994-04-26', 7, "https://scontent.fsdv1-2.fna.fbcdn.net/v/t31.18172-8/20248083_10203213989907988_3630261739891709060_o.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=XolrSsZMNU4AX-Ore7y&tn=hR76xO3MAtE8NAF4&_nc_ht=scontent.fsdv1-2.fna&oh=4c4688e57b432feaf074c91dd1e10c7c&oe=60EC4AE7"),
+            ('Amit@iWear.com', 'Amit', 'Aharoni',  '1994-04-26', 7, "https://scontent.fsdv1-2.fna.fbcdn.net/v/t31.18172-8/20248083_10203213989907988_3630261739891709060_o.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=XolrSsZMNU4AX-Ore7y&tn=hR76xO3MAtE8NAF4&_nc_ht=scontent.fsdv1-2.fna&oh=4c4688e57b432feaf074c91dd1e10c7c&oe=60EC4AE7"),
             ('Dror@iWear.com', 'Dror', 'Margalit', '1990-01-01', 8, "https://www.prolink.co.il/wp-content/uploads/2019/01/18_20160914_1693791918-1.jpg"),
             ('Liran@iWear.com', 'Liran', 'Chaim-Jan', '1993-03-18', 9, "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/70895053_10219609279239594_2087406298298580992_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=SQkW0LvLWccAX8KOhV6&_nc_ht=scontent.fsdv1-2.fna&oh=73376bd7e58d6a55bfdd5d8be0fbb723&oe=60EB9499"),
         ]
@@ -49,7 +51,33 @@ class Migration(migrations.Migration):
                 user.gender = gender
                 user.save()
 
+    def add_user_Location(apps, schema_editor):
+        with transaction.atomic():
+            locations = Location.objects.all()
+
+            for user in User.objects.all():
+                location = random.choice(locations)
+                user.location = location
+                user.save()
+
+    def add_admin_user(apps, schema_editor):
+        password = "iWear2021"
+
+        admin_data = [
+            ('admin@iWear.com', 'iWear', 'Admin', Location.objects.get(title='Tel Aviv'), '1994-04-26', 1111111111, "https://user-images.githubusercontent.com/58184521/121235257-54058280-c89d-11eb-9613-1590a2396d57.png"),
+            ('a@a.com', 'iWear', 'Admin', Location.objects.get(title='Tel Aviv'), '1994-04-26', 11111111111, "https://user-images.githubusercontent.com/58184521/121235257-54058280-c89d-11eb-9613-1590a2396d57.png"),
+        ]
+
+        with transaction.atomic():
+            for email, first_name, last_name, location, birth_date, reader_id, image_url in admin_data:
+                user = User(email=email, first_name=first_name, last_name=last_name, location=location, birth_date=birth_date,
+                    reader_id=reader_id, image_url=image_url, is_superuser=True, is_staff=True)
+                user.set_password(password)
+                user.save()     
+
     operations = [
         migrations.RunPython(generate_user_data),
         migrations.RunPython(add_user_Gender),
+        migrations.RunPython(add_user_Location),
+        migrations.RunPython(add_admin_user),
     ]

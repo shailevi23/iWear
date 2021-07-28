@@ -23,6 +23,10 @@
             <dt class="col-sm-3">Gender</dt>
             <dd class="col-sm-9">{{ user.gender.title }}</dd>
             {% endif %}
+            {% if user.location %}
+            <dt class="col-sm-3">Location</dt>
+            <dd class="col-sm-9">{{ user.location }}</dd>
+            {% endif %}
             <dt class="col-sm-3">Reader ID</dt>
             <dd class="col-sm-9">{{ user.reader_id }}</dd>
             <dt class="col-sm-3">Join date</dt>

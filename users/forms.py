@@ -1,5 +1,5 @@
 from django import forms
-from .models import User, Gender
+from .models import User, Gender    
 
 class UserCreationForm(forms.ModelForm):
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput())
@@ -8,7 +8,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'gender','birth_date', 'reader_id', 'image_url')
+        fields = ('email', 'first_name', 'last_name', 'location', 'gender','birth_date', 'reader_id', 'image_url')
 
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
@@ -40,7 +40,7 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'gender','birth_date', 'reader_id', 'image_url')
+        fields = ('email', 'first_name', 'last_name', 'location', 'gender','birth_date', 'reader_id', 'image_url')
 
 
 class GenderForm(forms.ModelForm):
