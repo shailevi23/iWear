@@ -15,8 +15,9 @@
         {% if categories %}
         <dl class="row">
             <dt style="color:red">Select category</dt>
-            <dt class="col-sm-{{ numOfCategories }}">
+            <dt class="col-sm-30">
                 {% for category in categories  %}
+                <a href="../category/{{ category }}"><img src="../../static/img/{{ category }}.png"  style="width:35px;height:35px;"></a>
                 <a href="../category/{{ category }}">{{ category }}</a> &emsp;
                 {% endfor %}
             </dt>

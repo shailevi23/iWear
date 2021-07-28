@@ -17,10 +17,13 @@
             <dt class="col-sm-3">Ideal temperature</dt>
             <dd class="col-sm-9">{% if ideal_temperature %} {{ ideal_temperature }} {% else %}No worn events{% endif %}</dd>
             <dt class="col-sm-3">First worn item</dt>
-            <dd class="col-sm-9">{% if totalWornEvents %} <b><a href="../item/{{first_worn_item.tag_id }}">{{ first_worn_item.name }}</a></b> on {{ first_worn_item_worn_event_date }}{% else %}No worn events{% endif %}</dd>
+            <dd class="col-sm-9">{% if totalWornEvents %}
+                <a href="../item/{{first_worn_item.tag_id }}"><img src="{{ first_worn_item.image_url }}"  style="width:35px;height:35px;"></a>
+                <b><a href="../item/{{first_worn_item.tag_id }}">{{ first_worn_item.name }}</a></b> on {{ first_worn_item_worn_event_date }}{% else %}No worn events{% endif %}</dd>
             <dt class="col-sm-3">Last worn item</dt>
-            <dd class="col-sm-9">{% if totalWornEvents %} <b><a href="../item/{{lastWornItem.tag_id }}">{{ lastWornItem.name }}</a></b> on {{ last_worn_item_worn_event_date }}{% else %}No worn events{% endif %}</dd>
-
+            <dd class="col-sm-9">{% if totalWornEvents %}
+                <a href="../item/{{lastWornItem.tag_id }}"><img src="{{ lastWornItem.image_url }}"  style="width:35px;height:35px;"></a>
+                 <b><a href="../item/{{lastWornItem.tag_id }}">{{ lastWornItem.name }}</a></b> on {{ last_worn_item_worn_event_date }}{% else %}No worn events{% endif %}</dd>
         </dl>
     </div>
 </div>
@@ -40,12 +43,17 @@
             <dt class="col-sm-3">Number of categories</dt>
             <dd class="col-sm-9">{{ numOfCategories }}</dd>
             <dt class="col-sm-3">Least worn category</dt>
-            <dd class="col-sm-9">{% if totalWornEvents %} <b><a href="../category/{{ leastWornCategory }}">{{ leastWornCategory }}</a></b> - {{ leastWornCategorytotalwornevent }} times, {{ least_worn_category_percentage }}% of the time.{% else %}No worn events{% endif %}</dd>
+            <dd class="col-sm-9">{% if totalWornEvents %}
+                <a href="../category/{{ leastWornCategory }}"><img src="../../static/img/{{ leastWornCategory }}.png"  style="width:35px;height:35px;"></a>
+                <b><a href="../category/{{ leastWornCategory }}">{{ leastWornCategory }}</a></b> - {{ leastWornCategorytotalwornevent }} times, {{ least_worn_category_percentage }}% of the time.{% else %}No worn events{% endif %}</dd>
             <dt class="col-sm-3">Most worn category</dt>
-            <dd class="col-sm-9">{% if totalWornEvents %} <b><a href="../category/{{mostWornCategory }}">{{ mostWornCategory }}</a></b> - {{ mostWornCategorytotalwornevent }} times, {{ most_worn_category_percentage }}% of the time.{% else %}No worn events{% endif %}</dd>
+            <dd class="col-sm-9">{% if totalWornEvents %}
+                <a href="../category/{{ mostWornCategory }}"><img src="../../static/img/{{ mostWornCategory }}.png"  style="width:35px;height:35px;"></a>
+                <b><a href="../category/{{ mostWornCategory }}">{{ mostWornCategory }}</a></b> - {{ mostWornCategorytotalwornevent }} times, {{ most_worn_category_percentage }}% of the time.{% else %}No worn events{% endif %}</dd>
             <dt style="color:red">Select a category to see its clothing items</dt>
-            <dt class="col-sm-{{numOfCategories}}">
+            <dt class="col-sm-30">
                 {% for category in categories  %}
+                <a href="../category/{{ category }}"><img src="../../static/img/{{ category }}.png"  style="width:35px;height:35px;"></a>
                 <a href="../category/{{ category }}">{{ category }}</a> &emsp;
                 {% endfor %}
             </dt>

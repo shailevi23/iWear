@@ -14,11 +14,11 @@
         {% if num_of_items %}
         <dl class="row">
             <dt class="col-sm-{{ num_of_items }}">
-                <dt style="color:red">Temperature range: {{ minimum_temperature }} - {{ maximum_temperature }}</dt>
+                <dt style="color:red">Temperature range: [{{ minimum_temperature }} - {{ maximum_temperature }}]</dt>
                 {% for item in recommended_items  %}
-                <b><a href="../../item/{{ item.tag_id }}">{{ item.name }}</a></b>
+                <b><a href="../item/{{item.tag_id }}"><img src="{{ item.image_url }}" style="width:35px;height:35px;"></a>
+                <a href="../../item/{{ item.tag_id }}">{{ item.name }}</a></b>
                 {% endfor %}
-            </dt>
         </dl>
         {% else %}
         <dt style="color:red">No items was found in the temperature range: {{ minimum_temperature }} - {{ maximum_temperature }}.</dt>

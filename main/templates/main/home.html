@@ -5,10 +5,22 @@
 {% block content %}
 <section>
     <div>
-        <h1>Welcom to iWear!</h1>
+        <img src="../../static/img/iWear_logo.png" alt="iWear logo" width="600" height="175">
+        <h2>Hey {{request.user.first_name}}!</h2>
+        <h5>Information and data</h5>
+        <a href="/closet" class="btn align-middle btn-primary ml-auto mr-3 order-lg-last" type="button">My Closet</a>
+        <a href="/profile" class="btn align-middle btn-primary ml-auto mr-3 order-lg-last" type="button">My Profile</a>
+
+        <h5>Operations</h5>
+        <a href="/add_item" class="btn align-middle btn-primary ml-auto mr-3 order-lg-last" type="button">Add New item</a>  
+        <a href="/add_worn_event" class="btn align-middle btn-primary ml-auto mr-3 order-lg-last" type="button">Add Worn Event</a>
+        <a href="/update_profile" class="btn align-middle btn-primary ml-auto mr-3 order-lg-last" type="button">Update profile</a>
         <br>
-        <h3>iWear is a web-app for collecting statistics and data on the use of clothing items using RFID technology.
-        <br>Developed in Python with Django in a Linux environment with VM.</h3>
+        <h5>Recommandations</h5>
+        <a href="/recommendations/weather" class="btn align-middle btn-primary ml-auto mr-3 order-lg-last" type="button">Weather</a>
+        <a href="/recommendations/category" class="btn align-middle btn-primary ml-auto mr-3 order-lg-last" type="button">Category</a>
+        <a href="/recommendations/randomly" class="btn align-middle btn-primary ml-auto mr-3 order-lg-last" type="button">Randomly</a>
+
     </div>
 </section>
 {% endblock content %} 

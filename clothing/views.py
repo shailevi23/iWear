@@ -195,7 +195,7 @@ def recommendations_weather(request):
                 "maximum_temperature": maximum_temperature,
                 })
         else:
-            weather_range_form = WeatherRangeForm(initial={'minimum_temperature':-15, 'maximum_temperature':45})
+            weather_range_form = WeatherRangeForm(initial={'minimum_temperature':20, 'maximum_temperature':35})
             items_in_closet = user.all_items
             num_of_items = len(items_in_closet) 
 

@@ -14,7 +14,9 @@ class Migration(migrations.Migration):
         password = "iWear2021"
 
         users_test_data = [
-            ('AmitAharoni@iWear.com', 'Amit', 'Aharoni', '1994-04-26', 7, "https://scontent.fsdv1-2.fna.fbcdn.net/v/t31.18172-8/20248083_10203213989907988_3630261739891709060_o.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=XolrSsZMNU4AX-Ore7y&tn=hR76xO3MAtE8NAF4&_nc_ht=scontent.fsdv1-2.fna&oh=4c4688e57b432feaf074c91dd1e10c7c&oe=60EC4AE7"),
+            ('iWear@iWear.com', 'Amit', 'iWear', '1994-04-26', 5, "https://user-images.githubusercontent.com/58184521/121235257-54058280-c89d-11eb-9613-1590a2396d57.png"),
+            ('TestUser@iWear.com', 'Amit', 'Test', '1994-04-26', 6, "https://user-images.githubusercontent.com/58184521/121235257-54058280-c89d-11eb-9613-1590a2396d57.png"),
+            ('Amit@iWear.com', 'Amit', 'Aharoni', '1994-04-26', 7, "https://scontent.fsdv1-2.fna.fbcdn.net/v/t31.18172-8/20248083_10203213989907988_3630261739891709060_o.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=XolrSsZMNU4AX-Ore7y&tn=hR76xO3MAtE8NAF4&_nc_ht=scontent.fsdv1-2.fna&oh=4c4688e57b432feaf074c91dd1e10c7c&oe=60EC4AE7"),
             ('Dror@iWear.com', 'Dror', 'Margalit', '1990-01-01', 8, "https://www.prolink.co.il/wp-content/uploads/2019/01/18_20160914_1693791918-1.jpg"),
             ('Liran@iWear.com', 'Liran', 'Chaim-Jan', '1993-03-18', 9, "https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/70895053_10219609279239594_2087406298298580992_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=SQkW0LvLWccAX8KOhV6&_nc_ht=scontent.fsdv1-2.fna&oh=73376bd7e58d6a55bfdd5d8be0fbb723&oe=60EB9499"),
         ]

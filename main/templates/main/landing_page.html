@@ -7,10 +7,15 @@
 {% block content %}
 <section>
     <div>
-        <h1>Welcom to iWear!</h1>
-        <br>
-        <h3>iWear is a web-app for collecting statistics and data on the use of clothing items using RFID technology.
-            <br>Developed in Python with Django in a Linux environment with VM.</h3>
+        <img src="../../static/img/iWear_logo.png" alt="iWear logo" width="600" height="200">
+        <h1>Welcome to iWear!</h1>
+        <h5>
+            iWear goal is to bring people’s closet to the digital world and make its usage advanced and smarter.<br>
+            iWear is using RFID technology in order to monitor and analyze the use of clothing items and to provide statistics and data.<br>
+            Based on the statistics and data, the user can manage his closet and get recommendations of clothing items based on different parameters.
+        </h5>
+        <a href="/login" class="btn align-middle btn-primary ml-auto mr-3 order-lg-last" type="button">Log in</a>
+        <a href="/register" class="btn align-middle btn-primary ml-auto mr-3 order-lg-last" type="button">Register</a>
     </div>
 </section>
 {% endblock content %} 

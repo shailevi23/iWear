@@ -6,7 +6,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-6">
-                <b><legend class="border-bottom mb-2">{{ category_name }} Category</legend></b>
+                <b><legend class="border-bottom mb-2"><img src="../../static/img/{{ category_name }}.png"  style="width:35px;height:35px;"> {{ category_name }} Category</legend></b>
             </div>
             <div class="col-6" style="text-align: right;">
                 <a href="{% url 'user-closet' %}" class="btn btn-primary">My Closet</a> 
@@ -17,10 +17,10 @@
             <dd class="col-sm-9">{{ num_of_items }}</dd>
             <dt class="col-sm-3">Total worn events</dt>
             <dd class="col-sm-9">{{ total_worn_events }}</dd>
-
             <dt style="color:red">Clothing Items</dt>
             {% for item in items_in_category  %}
-            <b><a href="../../item/{{ item.tag_id }}">{{ item.name }}</a></b>
+                <b><a href="../item/{{item.tag_id }}"><img src="{{ item.image_url }}"  style="width:35px;height:35px;"></a>
+                <a href="../../item/{{ item.tag_id }}">{{ item.name }}</a></b>
             {% endfor %}
         </dl>
     </div>

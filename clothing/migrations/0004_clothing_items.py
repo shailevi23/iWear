@@ -88,7 +88,7 @@ class Migration(migrations.Migration):
             for item, time_stamp, temperture in worn_events_test_data:
                 worn_event = WornEvent(item=item, time_stamp=time_stamp, temperture=temperture)
                 worn_event.save()
-        
+
     operations = [
         migrations.RunPython(generate_clothing_items),
         migrations.RunPython(generate_worn_events),

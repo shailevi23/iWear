@@ -12,9 +12,13 @@
                 <a href="{% url 'user-closet' %}" class="btn btn-primary">My Closet</a> 
             </div>
         </div>
+
+        
         <dl class="row">
             <dt class="col-sm-3">Category</dt>
-            <dd class="col-sm-9">{{ item.category.category_name }}</dd>
+            <dd class="col-sm-9">
+                <a href="../category/{{ item.category.category_name }}"><img src="../../static/img/{{ item.category.category_name }}.png" style="width:35px;height:35px;"></a>
+                <a href="../category/{{ item.category.category_name }}"> {{ item.category.category_name }}</a></dd>
             <dt class="col-sm-3">Tag ID</dt>
             <dd class="col-sm-9">{{ item.tag_id }}</dd>
             <dt class="col-sm-3">Number of times worn</dt>
@@ -25,7 +29,7 @@
             <dd class="col-sm-9">{{ dateOfFirstUse }}</dd>
             <dt class="col-sm-3">Date of last use</dt>
             <dd class="col-sm-9">{{ dateOfLastUse }}</dd>
-            <img class="col-sm-5" src="{{ item.image_url}}" height=200 alt="Item picture" id="Item_picture">
+            <img class="col-sm-5" src="{{ item.image_url}}"style="width:357px;height:180px;" alt="Item picture" id="Item_picture">
         </dl>
     </div>
 </div>

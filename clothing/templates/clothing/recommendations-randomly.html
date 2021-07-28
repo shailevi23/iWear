@@ -15,6 +15,7 @@
 
         {% if random_index %}
         <dl class="row">
+            <b><a href="../item/{{random_item.tag_id }}"><img src="{{ random_item.image_url }}"  style="width:35px;height:35px;"></a>
             <a href="../item/{{ random_item.tag_id }}">{{ random_item.name }}</a>
         </dl>
         {% else %}
