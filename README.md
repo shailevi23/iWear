@@ -25,17 +25,22 @@ Every time the user passes by the reader while wearing a clothing item, the read
 ## My closet
 <img src="https://user-images.githubusercontent.com/58184521/127240840-c2f5ef14-c9d3-4ed6-87b9-3d0d41fec032.png" width="650" />
 
+## Category overview
+<img src="https://user-images.githubusercontent.com/58184521/127347028-8551c23e-d4e5-460b-be76-01e6f049d199.png" width="650" />
+
 ## Clothing item overview
 <img src="https://user-images.githubusercontent.com/58184521/127240902-71c5466c-614d-4d60-863a-a8bf16dfa151.png" width="650" />
 
 # Features
 - Account creation & management.
-- Add and use clothing items.
-- Closet overview.
+- Add and manage clothing items.
+- Capture information about the use of clothing items. including weather temperature.
+- Closet/Category/Item overview.
 - Intelligent recommendations based on:  
 &nbsp;&nbsp; * Clothing category.  
 &nbsp;&nbsp; * Weather temperature.  
 &nbsp;&nbsp; * Random parameters.
+- Fully functional ADMIN site.
 
 # Architecture
 | Frontend      | Backennd      | Datebase      |
