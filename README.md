@@ -23,13 +23,13 @@ Every time the user passes by the reader while wearing a clothing item, the read
 
 # Screenshots
 ## My closet
-<img src="https://user-images.githubusercontent.com/58184521/127240840-c2f5ef14-c9d3-4ed6-87b9-3d0d41fec032.png" width="650" />
+<img src="https://user-images.githubusercontent.com/58184521/127578118-37493bb5-2bcf-466f-b345-8a668efbf591.png" width="650" />
 
 ## Category overview
-<img src="https://user-images.githubusercontent.com/58184521/127347028-8551c23e-d4e5-460b-be76-01e6f049d199.png" width="650" />
+<img src="https://user-images.githubusercontent.com/58184521/127578200-77b7b33c-611f-49d2-a848-f8f7dac702c0.png" width="650" />
 
 ## Clothing item overview
-<img src="https://user-images.githubusercontent.com/58184521/127240902-71c5466c-614d-4d60-863a-a8bf16dfa151.png" width="650" />
+<img src="https://user-images.githubusercontent.com/58184521/127578050-148163b1-fc38-42df-8419-ab803c7e44a2.png" width="650" />
 
 # Features
 - Account creation & management.

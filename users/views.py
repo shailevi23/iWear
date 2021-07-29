@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
-from clothing.models import ClothingItem
 from .models import User
 from .forms import UserUpdateForm
 
