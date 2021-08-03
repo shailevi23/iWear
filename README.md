@@ -53,7 +53,8 @@ Every time the user passes by the reader while wearing a clothing item, the read
 
 # Installation
 1. Install [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/)/[VMWare](https://www.vmware.com/) hypervisor.
-2. Clone [roo.me](https://github.com/beyond-io/roo.me) repository.
+2. Install [Python](https://www.python.org/downloads/) (version 3.9.3 and above)
+3. Clone [roo.me](https://github.com/beyond-io/roo.me) repository.
    ```sh
    https://github.com/AmitAharoni/iWear2021.git
    ```
